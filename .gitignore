@@ -22,3 +22,5 @@ js.session
 .idea
 mydatabase
 *Zone.Identifier
+
+examples/CanoniCAI/mycode/ner_model
