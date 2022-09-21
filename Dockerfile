@@ -1,19 +1,11 @@
-FROM ubuntu:20.04 as base
+FROM tensorflow/tensorflow:2.10.0
 
-RUN apt-get update -q \
-    && DEBIAN_FRONTEND="noninteractive" \
-    apt-get install -yq \
-    python3.10 \
-    python3-pip
+RUN apt-get update && apt-get install apt-utils build-essential pkg-config git python3-dev -y
+RUN rm -rf /var/lib/apt/lists/*
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir jaseci==1.3.4.8
+RUN pip install --no-cache-dir jaseci_kit
+RUN pip install --no-cache-dir jaseci_serv
 
-RUN pip install \
-    tensorflow \
-    jaseci \
-    jaseci_kit \
-    jaseci_serv
-
-WORKDIR "/jaseci"
-
+WORKDIR /jaseci
 COPY . .
-
-
