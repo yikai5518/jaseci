@@ -195,7 +195,8 @@ graph tesla_ai {
 }
 
 walker talk {
-    has question, interactive = false;
+    has question;
+    has interactive = false;
     has wlk_ctx = {
         "intent": null,
         "entities": {},
